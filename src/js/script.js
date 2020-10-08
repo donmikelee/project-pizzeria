@@ -59,8 +59,8 @@
       thisProduct.id = id;
       thisProduct.data = data;
 
-      thisProduct.renderInMenu;
-      thisProduct.initAccordion;
+      thisProduct.renderInMenu();
+      thisProduct.initAccordion();
 
       console.log('new Product:', thisProduct);
     }
@@ -89,25 +89,46 @@
 
       /* find the clickable trigger (the element that should react to clicking) */
 
+      const clickedElement = thisProduct.element.querySelector(select.menuProduct.clickable);
+
+      console.log(clickedElement);
+
       /* START: click event listener to trigger */
 
-      /* prevent default action for event */
+      clickedElement.addEventListener('click', function(event) {
 
-      /* toggle active class on element of thisProduct */
+        /* prevent default action for event */
 
-      /* find all active products */
+        event.preventDefault();
 
-      /* START LOOP: for each active product */
+        /* toggle active class on element of thisProduct */
 
-      /* START: if the active product isn't the element of thisProduct */
+        thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
 
-      /* remove class active for the active product */
+        /* find all active products */
 
-      /* END: if the active product isn't the element of thisProduct */
+        const activeProducts = document.querySelectorAll('.active');
 
-      /* END LOOP: for each active product */
+        /* START LOOP: for each active product */
 
-      /* END: click event listener to trigger */
+        // eslint-disable-next-line no-empty
+        for(let activeProduct of activeProducts){
+          
+          /* START: if the active product isn't the element of thisProduct */
+
+          if(activeProduct == clickedElement){
+
+            /* remove class active for the active product */
+
+            activeProduct.classList.remove('active');
+
+            /* END: if the active product isn't the element of thisProduct */
+            
+          }
+          /* END LOOP: for each active product */
+        }
+        /* END: click event listener to trigger */
+      });
     }
   }
 
