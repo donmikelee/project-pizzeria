@@ -40,6 +40,7 @@
     },
   };
 
+  // eslint-disable-next-line no-unused-vars
   const settings = {
     amountWidget: {
       defaultValue: 1,
@@ -65,7 +66,7 @@
       thisProduct.initOrderForm();
       thisProduct.processOrder();
 
-      console.log('new Product:', thisProduct);
+      // console.log('new Product:', thisProduct);
     }
     renderInMenu(){
       const thisProduct = this;
@@ -163,15 +164,51 @@
         thisProduct.processOrder();
       });
 
-      console.log('initOrderForm()');
+      // console.log('initOrderForm()');
     }
     processOrder(){
       const thisProduct = this;
 
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData', formData);
+      // console.log('formData', formData);
+
+      /* create variable price coming from thisProduct.data.price */
+
+      let price = thisProduct.data.price;
+
+      console.log('Prices:', price);
+
+      /* find params and add to constans */
+
+      const params = thisProduct.data.params;
+
+      console.log('This are params', params);
       
-      console.log('processOrder()');
+      /* START LOOP: for each params */
+
+      for(let param in params){
+
+        /* find options in params object*/
+
+        const options = thisProduct.data.params.options;
+
+        console.log('This are options', options);
+
+        /* START another LOOP: for each options of params */
+
+        /* check if CLICKED option isn't default, price should increase */
+
+        /* check if UNCKLICKED option isn't default, price should decrease */
+
+        /* END OF LOOP: for each keys */
+
+        /* END OF LOOP: for each params */
+
+      }
+
+      /* match variable price to element thisProduct.priceElem */
+ 
+      // console.log('processOrder()');
     }
   }
 
