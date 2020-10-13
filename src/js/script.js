@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* global Handlebars, utils, dataSource */ // eslint-disable-line no-unused-vars
 
 {
@@ -172,37 +173,37 @@
       const formData = utils.serializeFormToObject(thisProduct.form);
       // console.log('formData', formData);
 
-      /* create variable price coming from thisProduct.data.price */
+      /* set variable price to equal thisProduct.data.price */
 
       let price = thisProduct.data.price;
 
-      console.log('Prices:', price);
-
-      /* find params and add to constans */
-
-      const params = thisProduct.data.params;
-
-      console.log('This are params', params);
-      
       /* START LOOP: for each params */
 
-      for(let param in params){
+      for(let paramId in thisProduct.data.params){
 
-        /* find options in params object*/
+        const param = thisProduct.data.params[paramId];
 
-        const options = thisProduct.data.params.options;
-
-        console.log('This are options', options);
+        console.log('This is param:', paramId);
 
         /* START another LOOP: for each options of params */
 
-        /* check if CLICKED option isn't default, price should increase */
+        for (let optionId in param.options){
 
-        /* check if UNCKLICKED option isn't default, price should decrease */
+          const option = param.options[optionId];
 
-        /* END OF LOOP: for each keys */
+          console.log('This is option:', optionId);
 
-        /* END OF LOOP: for each params */
+          /* check if CLICKED option isn't default, price should increase */
+
+          /* check if UNCKLICKED option is default, price should decrease */
+
+          /* END OF LOOP: for each keys */
+
+          /* END OF LOOP: for each params */
+
+        }
+
+        
 
       }
 
