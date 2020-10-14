@@ -181,33 +181,44 @@
 
       for(let paramId in thisProduct.data.params){
 
-        const param = thisProduct.data.params[paramId];
+        const param = thisProduct.data.params[paramId]; //object
 
-        console.log('This is param:', paramId);
+        // console.log('This is param:', paramId);
 
         /* START another LOOP: for each options of params */
 
         for (let optionId in param.options){
 
+          // console.log('This is object', param.options);
+
           const option = param.options[optionId];
 
-          console.log('This is option:', optionId);
+          // console.log('This is option:', optionId);
+
+          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+
+          // console.log(optionSelected);
 
           /* check if CLICKED option isn't default, price should increase */
-
+          if(optionSelected && !option.default){
+            price += option.price;
+            // console.log(price);
+          }
           /* check if UNCKLICKED option is default, price should decrease */
-
-          /* END OF LOOP: for each keys */
-
-          /* END OF LOOP: for each params */
-
+          else if(!optionSelected && option.default){
+            price -= option.price;
+            // console.log(price);
+          }
         }
-
-        
-
+        /* END OF LOOP: for each keys */
       }
-
+      /* END OF LOOP: for each params */
+      
       /* match variable price to element thisProduct.priceElem */
+
+      thisProduct.priceElem.innerHTML = price;
+
+      console.log(thisProduct.priceElem);
  
       // console.log('processOrder()');
     }
