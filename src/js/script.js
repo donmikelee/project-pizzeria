@@ -258,6 +258,8 @@
         /* END OF LOOP: for each keys */
       }
       /* END OF LOOP: for each params */
+
+      price *= thisProduct.amountWidget.value;
       
       /* match variable price to element thisProduct.priceElem */
 
@@ -273,6 +275,9 @@
       const thisProduct = this;
 
       thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
+      thisProduct.amountWidgetElem.addEventListener('updated', function(){
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -280,10 +285,11 @@
     constructor(element){
       const thisWidget = this;
 
+
       thisWidget.getElements(element);
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
-;
       // console.log('AmountWidget:', thisWidget);
       // console.log('constructor arguments:', element);
     }
@@ -303,7 +309,14 @@
 
       /* TODO : Add validation */
 
-      thisWidget.value = newValue;
+      console.log('To jest dotychczasowa wartość: ',thisWidget);
+
+
+      if(thisWidget.value != newValue && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax){
+        thisWidget.value = newValue;
+        thisWidget.announce();
+      }
+     
       thisWidget.input.value = thisWidget.value;
     }
     initActions(){
@@ -323,6 +336,12 @@
         thisWidget.setValue(thisWidget.value + 1);
       });
 
+    }
+    announce(){
+      const thisWidget = this;
+
+      const event = new Event('updated');
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
