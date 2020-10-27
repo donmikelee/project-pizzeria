@@ -404,7 +404,7 @@
     constructor(element){
       const thisCart = this;
 
-      thisCart.product = [];
+      thisCart.products = [];
 
       thisCart.getElements(element);
       thisCart.initActions();
@@ -443,9 +443,12 @@
 
       thisCart.dom.productList.appendChild(generatedDOM);
 
-      console.log(generatedDOM);
+      thisCart.products.push(menuProduct);
+      console.log('thisCart.products', thisCart.products);
 
-      console.log('adding product', menuProduct);
+      // console.log(generatedDOM);
+
+      // console.log('adding product', menuProduct);
     }
   }
 
