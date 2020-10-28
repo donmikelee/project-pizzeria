@@ -329,8 +329,8 @@
     addToCart(){
       const thisProduct = this;
 
-      thisProduct.data.name = thisProduct.name;
-      thisProduct.amountWidget.value = thisProduct.amount;
+      thisProduct.name = thisProduct.data.name;
+      thisProduct.amount = thisProduct.amountWidget.value;
 
       app.cart.add(thisProduct);
     }
@@ -443,17 +443,17 @@
 
       thisCart.dom.productList.appendChild(generatedDOM);
 
-      thisCart.products.push(menuProduct);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
       console.log('thisCart.products', thisCart.products);
       
 
       // console.log(generatedDOM);
 
-      console.log('Adding product id:', menuProduct.id);
-      console.log('Adding product name:', menuProduct.name);
-      console.log('Adding product price:', menuProduct.price);
-      console.log('Adding product single price:', menuProduct.priceSingle);
-      console.log('Adding product amount:', menuProduct.amount);
+      // console.log('Adding product id:', menuProduct.id);
+      // console.log('Adding product name:', menuProduct.name);
+      // console.log('Adding product price:', menuProduct.price);
+      // console.log('Adding product single price:', menuProduct.priceSingle);
+      // console.log('Adding product amount:', menuProduct.amount);
     }
   }
 
@@ -463,14 +463,15 @@
 
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
-      thisCartProduct.price = menuProduct.price;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
-      thisCartProduct.amount = menuProduct.amount;
-      thisCartProduct.params = JSON.parse(JSON.stringfy(menuProduct.params));
+      thisCartProduct.amount = thisCartProduct.amountWidget;
+      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+      console.log('To jest value amountWidget:', thisCartProduct.amount.value);
+      thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
 
       thisCartProduct.getElements(element);
+      this.initAmountWidget();
     }
-   
     getElements(element){
       const thisCartProduct = this;
       
@@ -484,10 +485,15 @@
    
    
       console.log(thisCartProduct);
-   
     }
-   
-   
+    initAmountWidget(){
+      const thisCartProduct = this;
+
+      thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
+      thisCartProduct.amountWidget.addEventListener('updated', function(){
+        
+      });
+    }
   }
 
   
