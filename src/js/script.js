@@ -409,7 +409,7 @@
       thisCart.getElements(element);
       thisCart.initActions();
 
-      console.log('new Cart', thisCart);
+      // console.log('new Cart', thisCart);
     }
 
     getElements(element){
@@ -423,7 +423,7 @@
 
       thisCart.dom.productList = element.querySelector(select.cart.productList);
 
-      console.log(thisCart.dom.productList);
+      // console.log(thisCart.dom.productList);
     }
     initActions(){
       const thisCart = this;
@@ -445,11 +445,49 @@
 
       thisCart.products.push(menuProduct);
       console.log('thisCart.products', thisCart.products);
+      
 
       // console.log(generatedDOM);
 
-      // console.log('adding product', menuProduct);
+      console.log('Adding product id:', menuProduct.id);
+      console.log('Adding product name:', menuProduct.name);
+      console.log('Adding product price:', menuProduct.price);
+      console.log('Adding product single price:', menuProduct.priceSingle);
+      console.log('Adding product amount:', menuProduct.amount);
     }
+  }
+
+  class CartProduct{
+    constructor(menuProduct, element){
+      const thisCartProduct = this;
+
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.params = JSON.parse(JSON.stringfy(menuProduct.params));
+
+      thisCartProduct.getElements(element);
+    }
+   
+    getElements(element){
+      const thisCartProduct = this;
+      
+      thisCartProduct.dom = {};
+
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.price = element.querySelector(select.cartProduct.price);
+      thisCartProduct.dom.edit = element.querySelector(select.cartProduct.edit);
+      thisCartProduct.dom.remove = element.querySelector(select.cartProduct.remove);
+   
+   
+      console.log(thisCartProduct);
+   
+    }
+   
+   
   }
 
   
