@@ -404,26 +404,27 @@
     constructor(element){
       const thisCart = this;
 
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
       thisCart.products = [];
 
       thisCart.getElements(element);
       thisCart.initActions();
-
       // console.log('new Cart', thisCart);
     }
-
     getElements(element){
       const thisCart = this;
 
       thisCart.dom = {};
-
       thisCart.dom.wrapper = element;
-
       thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
-
       thisCart.dom.productList = element.querySelector(select.cart.productList);
-
       // console.log(thisCart.dom.productList);
+
+      thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
+
+      for(let key of thisCart.renderTotalsKeys){
+        thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
+      }
     }
     initActions(){
       const thisCart = this;
@@ -454,6 +455,29 @@
       // console.log('Adding product price:', menuProduct.price);
       // console.log('Adding product single price:', menuProduct.priceSingle);
       // console.log('Adding product amount:', menuProduct.amount);
+      thisCart.update();
+    }
+    update(){
+      const thisCart = this;
+
+      thisCart.totalNumber = 0;
+      thisCart.subtotalPrice = 0; 
+      
+      for(let product of thisCart.products){
+        thisCart.subtotalPrice =+ product.price;
+        thisCart.totalNumber =+ product.amount;
+      }
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
+      // console.log('To jest total number', thisCart.totalNumber);
+      // console.log('To jest subtotal price', thisCart.subtotalPrice);
+      // console.log('To jest total price', thisCart.totalPrice);
+      // console.log('To jest delivery fee', thisCart.deliveryFee);
+
+      for(let key of thisCart.renderTotalsKeys){
+        for(let elem of thisCart.dom[key]){
+          elem.innerHTML = thisCart[key];
+        }
+      }
     }
   }
 
@@ -464,7 +488,7 @@
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
       thisCartProduct.priceSingle = menuProduct.priceSingle;
-      thisCartProduct.amount = menuProduct.amountWidget.value;
+      thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
       thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
 
@@ -489,8 +513,13 @@
       const thisCartProduct = this;
 
       thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
-      thisCartProduct.amountWidget.addEventListener('updated', function(){
-        thisCartProduct.dom.price.appendChild(thisCartProduct.price);
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function(){
+
+        thisCartProduct.amount = thisCartProduct.amountWidget.value;
+        // console.log('To jest value: ', thisCartProduct.amount);
+        thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
   }
