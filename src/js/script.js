@@ -75,7 +75,7 @@
     }, // CODE CHANGED
     // CODE ADDED START
     cart: {
-      defaultDeliveryFee: 20,
+      defaultDeliveryFee: 5,
     },
     // CODE ADDED END
   };
@@ -395,7 +395,9 @@
     announce(){
       const thisWidget = this;
 
-      const event = new Event('updated');
+      const event = new CustomEvent('updated', {
+        bubbles: true
+      });
       thisWidget.element.dispatchEvent(event);
     }
   }
@@ -433,6 +435,12 @@
 
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
 
+      });
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.update();
+      });
+      thisCart.dom.productList.addEventListener('updated', function(){
+        thisCart.remove(event.detail.CartProduct);
       });
     }
     add(menuProduct){
@@ -479,6 +487,18 @@
         }
       }
     }
+    remove(cartProduct){
+      const thisCart = this;
+      const index = thisCart.products.indexOf(cartProduct);
+
+      thisCart.products.splice(index, 1);
+
+      console.log(thisCart.products.splice(index, 1));
+
+      cartProduct.dom.wrapper.remove(index);
+      
+
+    }
   }
 
   class CartProduct{
@@ -494,6 +514,7 @@
 
       thisCartProduct.getElements(element);
       thisCartProduct.initAmountWidget();
+      thisCartProduct.initActions();
     }
     getElements(element){
       const thisCartProduct = this;
@@ -522,9 +543,32 @@
         thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
       });
     }
+    remove(){
+      const thisCartProduct = this;
+
+      const event = new CustomEvent('remove', {
+        bubbles: true,
+        detail: {
+          cartProduct: thisCartProduct,
+        },
+      });
+    
+
+      thisCartProduct.dom.wrapper.dispatchEvent(event);
+    }
+    initActions(){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom.edit.addEventListener('click', function(){
+        
+      });
+      thisCartProduct.dom.remove.addEventListener('click', function(){
+        thisCartProduct.remove();
+        console.log('Nie będzie pizzy łakomczuszku:', thisCartProduct.remove());
+      });
+    }
   }
 
-  
 
   const app = {
     initMenu: function(){
