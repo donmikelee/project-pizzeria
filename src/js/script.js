@@ -470,7 +470,7 @@
         totalNumber: thisCart.totalNumber,
         subtotalPrice: thisCart.subtotalPrice,
         deliveryFee: thisCart.deliveryFee,
-        products: thisCart.products
+        products: []
       };
 
       for(let product of thisCart.products){
@@ -521,8 +521,8 @@
       thisCart.subtotalPrice = 0; 
       
       for(let product of thisCart.products){
-        thisCart.subtotalPrice =+ product.price;
-        thisCart.totalNumber =+ product.amount;
+        thisCart.subtotalPrice += product.price;
+        thisCart.totalNumber += product.amount;
       }
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
       // console.log('To jest total number', thisCart.totalNumber);
@@ -623,6 +623,8 @@
         price: thisCartProduct.price,
         params: thisCartProduct.params 
       };
+
+      return product;
     }
   }
 
