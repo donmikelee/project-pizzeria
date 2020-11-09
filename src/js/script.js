@@ -78,6 +78,11 @@
       defaultDeliveryFee: 5,
     },
     // CODE ADDED END
+    db: {
+      url: '//localhost:3131',
+      product: 'product',
+      order: 'order',
+    }
   };
   
   const templates = {
@@ -420,6 +425,10 @@
       thisCart.dom.wrapper = element;
       thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
       thisCart.dom.productList = element.querySelector(select.cart.productList);
+      thisCart.dom.form = element.querySelector(select.cart.form);
+
+      thisCart.phone = select.cart.phone;
+      thisCart.address = select.cart.address;
       // console.log(thisCart.dom.productList);
 
       thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
@@ -440,9 +449,48 @@
         thisCart.update();
       });
       thisCart.dom.productList.addEventListener('remove', function(event){
-        console.log(event);
         thisCart.remove(event.detail.cartProduct);
       });
+      thisCart.dom.form.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        thisCart.sendOrder();
+      });
+    }
+    sendOrder(){
+      const thisCart = this;
+
+      const url = settings.db.url + '/' + settings.db.order;
+
+      const payload = {
+        address: 'test',
+        totalPrice: thisCart.totalPrice,
+        phone: thisCart.phone,
+        adress: thisCart.adress,
+        totalNumber: thisCart.totalNumber,
+        subtotalPrice: thisCart.subtotalPrice,
+        deliveryFee: thisCart.deliveryFee,
+        products: thisCart.products
+      };
+
+      for(let product of thisCart.products){
+        payload.products.push(product.getData());
+      }
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function(response) {
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        });
     }
     add(menuProduct){
       const thisCart = this;
@@ -564,6 +612,18 @@
         console.log('Nie będzie pizzy łakomczuszku:', thisCartProduct.remove());
       });
     }
+    getData(){
+      const thisCartProduct = this;
+
+      const product = {
+        id: thisCartProduct.id,
+        name: thisCartProduct.name,
+        priceSingle: thisCartProduct.priceSingle,
+        amount: thisCartProduct.amount,
+        price: thisCartProduct.price,
+        params: thisCartProduct.params 
+      };
+    }
   }
 
 
@@ -572,14 +632,35 @@
       const thisApp = this; 
       // console.log('thisApp.data:', thisApp.data);
       for(let productData in thisApp.data.products){
-        new Product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
 
     initData: function() {
       const thisApp = this;
 
-      thisApp.data = dataSource;
+      thisApp.data = {};
+
+      const url = settings.db.url + '/' + settings.db.product;
+
+      fetch(url)
+        .then(function(rawResponse){
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+
+          /* save parsedResponse as thisApp.data.products */
+
+          thisApp.data.products = parsedResponse;
+
+          /* execute initMenu method */
+
+          thisApp.initMenu();
+        });
+
+
+      console.log('thisApp.data', JSON.stringify(thisApp.data));
     },
 
     initCart: function(){
@@ -597,7 +678,6 @@
       // console.log('settings:', settings);
       // console.log('templates:', templates);
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     }
   };
