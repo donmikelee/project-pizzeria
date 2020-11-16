@@ -1,13 +1,12 @@
 import { templates } from '../settings.js';
 import { select } from '../settings.js';
-import { utils } from '../utils.js';
 import {amountWidget} from './AmountWidget.js';
 
 export class Booking{
-  constructor(){
+  constructor(bookingWidgetContainer){
     const thisBooking = this;
 
-    thisBooking.render(thisBooking.container);
+    thisBooking.render(bookingWidgetContainer);
     thisBooking.initWidgets();
   }
   render(element){
@@ -19,13 +18,10 @@ export class Booking{
 
     thisBooking.dom.wrapper = element;
 
-    console.log(thisBooking.dom);
+    thisBooking.dom.wrapper.innerHTML  = generatedHTML;
 
-    thisBooking.element = utils.createDOMfromHTML(generatedHTML);
-
-    thisBooking.dom.peopleAmount = element.querySelector(select.booking.peopleAmount);
-    console.log(thisBooking.dom.peopleAmount);
-    thisBooking.dom.hoursAmount = element.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.peopleAmount = thisBooking.querySelector(select.booking.peopleAmount);
+    thisBooking.dom.hoursAmount = thisBooking.querySelector(select.booking.hoursAmount);
 
   }
   initWidgets(){
