@@ -1,6 +1,5 @@
 import {select, settings} from '../settings.js';
 
-
 export class amountWidget{
   constructor(element){
     const thisWidget = this;
