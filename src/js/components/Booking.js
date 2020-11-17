@@ -18,16 +18,16 @@ export class Booking{
 
     thisBooking.dom.wrapper = element;
 
-    console.log(thisBooking.dom);
+    // console.log(thisBooking.dom);
 
     thisBooking.dom.wrapper.innerHTML  = generatedHTML;
 
     // console.log(generatedHTML);
 
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
-    console.log(thisBooking.dom.peopleAmount);
+    // console.log(thisBooking.dom.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
-    console.log(thisBooking.dom.hoursAmount);
+    // console.log(thisBooking.dom.hoursAmount);
 
 
   }

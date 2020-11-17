@@ -59,9 +59,10 @@ const app = {
     thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
     thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
 
-    // thisApp.activatePage(thisApp.pages[0].id);
 
     let pagesMatchingHash = [];
+
+    
 
     if(window.location.hash.length > 2){
       const idFromHash = window.location.hash.replace('#/', '');
@@ -110,7 +111,7 @@ const app = {
 
     thisApp.widgetContainer = document.querySelector(select.containerOf.booking);
 
-    console.log(thisApp.widgetContainer);
+    // console.log(thisApp.widgetContainer);
 
     thisApp.booking = new Booking(thisApp.widgetContainer);
 
