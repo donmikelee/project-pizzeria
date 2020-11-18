@@ -17,6 +17,7 @@ export class baseWidget{
   renderValue(){
     const thisWidget = this;
 
+    // thisWidget.dom.input.value = thisWidget.value;
     console.log('widget value:', thisWidget.value);
   }
   announce(){
