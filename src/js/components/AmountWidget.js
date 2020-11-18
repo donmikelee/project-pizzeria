@@ -13,12 +13,12 @@ export class amountWidget extends baseWidget{
   getElements(){
     const thisWidget = this;
 
-    thisWidget.dom = {};
-
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
     // console.log(thisWidget.input);
     thisWidget.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
+
+    // console.log(this.dom);
   }
   isValid(newValue){
     return !isNaN(newValue) && newValue >= settings.amountWidget.defaultMin && newValue <= settings.amountWidget.defaultMax;
