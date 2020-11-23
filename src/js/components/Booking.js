@@ -91,18 +91,22 @@ export class Booking{
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
+  // eslint-disable-next-line no-unused-vars
   parseData(bookings, eventsCurrent, eventsRepeat){
     const thisBooking = this;
 
     thisBooking.booked = {};
-
-    console.log(eventsCurrent);
-
-    for(let booked in thisBooking.booked){
+  
+    for(let event of eventsCurrent){
+      console.log('event', event);
       
-      booked.thisBooking.makeBooked(eventsCurrent.date, eventsCurrent.hour, eventsCurrent.duration, eventsCurrent.table);
+      thisBooking.makeBooked(
+        event.date, 
+        event.hour, 
+        event.duration, 
+        event.table);
 
-      console.log('Book:', booked);
+      console.log('Book:', thisBooking.booked);
     }
 
   }
@@ -114,10 +118,13 @@ export class Booking{
     thisBooking.booked.date.hour.duration = duration;
     thisBooking.booked.date.hour.duration.table = table;
 
-    date = '2020-11-20';
-    hour = '12.5';
-    duration = '30';
-    table = '1';
+    date = [];
+    hour = thisBooking.booked[date];
+    table = thisBooking.booked[date][hour];
+
+    date.push('2020-11-20');
+    hour.push('12.5');
+    table.push('1');
 
     console.log(thisBooking.booked);
     
