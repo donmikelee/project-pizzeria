@@ -113,20 +113,22 @@ export class Booking{
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
 
-    thisBooking.booked.date = date;
-    thisBooking.booked.date.hour = hour;
-    thisBooking.booked.date.hour.duration = duration;
-    thisBooking.booked.date.hour.duration.table = table;
+    if(typeof thisBooking.booked[date] == 'undefined'){
+      thisBooking.booked[date] = {};
+    }
 
-    date = [];
-    hour = thisBooking.booked[date];
-    table = thisBooking.booked[date][hour];
+    const startHour = utils.hourToNumber(hour);
 
-    date.push('2020-11-20');
-    hour.push('12.5');
-    table.push('1');
+    for(let hourBlock = startHour; hourBlock < startHour + duration; duration += 0.5){
+      if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
+        thisBooking.booked[date][hourBlock] = [];
+      }
 
-    console.log(thisBooking.booked);
+      thisBooking.booked[date][hourBlock].push(table);
+    }
+
+    
+    console.log('thisBooking.booked', thisBooking.booked);
     
   }
 }
