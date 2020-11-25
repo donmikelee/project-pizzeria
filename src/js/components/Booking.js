@@ -71,9 +71,9 @@ export class Booking{
       eventsRepeat: settings.db.url + '/' + settings.db.event + '?' + params.eventsRepeat,
     };
     
-    console.log('getData urls', urls);
+    // console.log('getData urls', urls);
 
-    console.log('getDara params', params);
+    // console.log('getDara params', params);
 
     Promise.all([
       fetch(urls.booking),
@@ -98,15 +98,29 @@ export class Booking{
     thisBooking.booked = {};
   
     for(let event of eventsCurrent){
-      console.log('event', event);
+      // console.log('event', event);
       
       thisBooking.makeBooked(
         event.date, 
         event.hour, 
         event.duration, 
         event.table);
+    }
+    for(let booking of bookings){
+      // console.log('Booking', booking);
+      
+      thisBooking.makeBooked(
+        booking.date, 
+        booking.hour, 
+        booking.duration, 
+        booking.table);
+    }
+    for(let event of eventsRepeat){
+      console.log('eventRepeat', event);
+      
+    
 
-      console.log('Book:', thisBooking.booked);
+
     }
 
   }
@@ -119,7 +133,7 @@ export class Booking{
 
     const startHour = utils.hourToNumber(hour);
 
-    for(let hourBlock = startHour; hourBlock < startHour + duration; duration += 0.5){
+    for(let hourBlock = startHour; hourBlock < startHour + duration; hourBlock += 0.5){
       if(typeof thisBooking.booked[date][hourBlock] == 'undefined'){
         thisBooking.booked[date][hourBlock] = [];
       }
@@ -128,7 +142,7 @@ export class Booking{
     }
 
     
-    console.log('thisBooking.booked', thisBooking.booked);
+    // console.log('thisBooking.booked', thisBooking.booked);
     
   }
 }
