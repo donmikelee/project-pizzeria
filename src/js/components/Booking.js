@@ -96,9 +96,10 @@ export class Booking{
     const thisBooking = this;
 
     thisBooking.booked = {};
+
   
     for(let event of eventsCurrent){
-      // console.log('event', event);
+      console.log('event', event);
       
       thisBooking.makeBooked(
         event.date, 
@@ -107,8 +108,8 @@ export class Booking{
         event.table);
     }
     for(let booking of bookings){
-      // console.log('Booking', booking);
-      
+      console.log('Booking', booking);
+    
       thisBooking.makeBooked(
         booking.date, 
         booking.hour, 
@@ -119,8 +120,6 @@ export class Booking{
       console.log('eventRepeat', event);
       
     
-
-
     }
 
   }
@@ -142,7 +141,7 @@ export class Booking{
     }
 
     
-    // console.log('thisBooking.booked', thisBooking.booked);
+    console.log('thisBooking.booked', thisBooking.booked);
     
   }
 }
