@@ -116,10 +116,24 @@ export class Booking{
         booking.duration, 
         booking.table);
     }
-    for(let event of eventsRepeat){
-      console.log('eventRepeat', event);
-      
-    
+    for (let repEvent of eventsRepeat) {
+      console.log('repeating event', repEvent);
+      if (repEvent.repeat == 'daily') {
+        const eventDateParse = new Date(repEvent.date); 
+        const maxDate = utils.addDays(repEvent.date, 14);  
+        for (
+          let loopDate = eventDateParse;
+          loopDate <= maxDate;
+          loopDate = utils.addDays(loopDate, 1)
+        ) {
+          thisBooking.makeBooked(
+            utils.dateToStr(loopDate),
+            repEvent.hour,
+            repEvent.duration,
+            repEvent.table
+          );
+        }
+      }
     }
 
   }
