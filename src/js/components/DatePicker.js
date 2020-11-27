@@ -24,14 +24,22 @@ export class datePicker extends baseWidget{
       maxDate: thisWidget.maxDate,
       'disable': [
         function(date) {
-          return (date.getDay() === 0 || date.getDay() === 6);
+          return (date.getDay() === 1);
         }
       ],
       'locale': {
-        'firstDayOfWeek': 1
+        'firstDayOfWeek': 2
       },
-      onChange: function(dateStr){
-        thisWidget.value = dateStr; 
+      onChange: function(selectedDates, dateStr){
+
+        
+        thisWidget.value = dateStr;
+        // selectedDates.push(thisWidget.value);
+
+        console.log('selectedDates',selectedDates);
+        console.log('dateStr',dateStr);
+
+        
       }
     });
   }

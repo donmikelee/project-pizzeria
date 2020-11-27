@@ -48,6 +48,12 @@ export class Booking{
     thisBooking.hoursAmount = new amountWidget(thisBooking.dom.hoursAmount);
     thisBooking.datePicker = new datePicker(thisBooking.dom.datePicker);
     thisBooking.hourPicker = new hourPicker(thisBooking.dom.hourPicker);
+
+    thisBooking.dom.wrapper.addEventListener('updated', function(){
+      thisBooking.updateDOM(); 
+    })
+
+    
   }
   getData(){
     const thisBooking = this;
@@ -99,7 +105,7 @@ export class Booking{
 
   
     for(let event of eventsCurrent){
-      console.log('event', event);
+      // console.log('event', event);
       
       thisBooking.makeBooked(
         event.date, 
@@ -117,7 +123,7 @@ export class Booking{
         booking.table);
     }
     for (let repEvent of eventsRepeat) {
-      console.log('repeating event', repEvent);
+      // console.log('repeating event', repEvent);
       if (repEvent.repeat == 'daily') {
         const eventDateParse = new Date(repEvent.date); 
         const maxDate = utils.addDays(repEvent.date, 14);  
@@ -155,7 +161,10 @@ export class Booking{
     }
 
     
-    console.log('thisBooking.booked', thisBooking.booked);
+    // console.log('thisBooking.booked', thisBooking.booked);
     
+  }
+  updateDOM(){
+    console.log('Coś ma się pojawić');
   }
 }
