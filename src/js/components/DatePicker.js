@@ -36,9 +36,9 @@ export class datePicker extends baseWidget{
         thisWidget.value = dateStr;
         // selectedDates.push(thisWidget.value);
 
-        console.log('selectedDates', selectedDates);
-        console.log('dateStr', dateStr);
-        console.log('thisWidget.value', thisWidget.value);
+        // console.log('selectedDates', selectedDates);
+        // console.log('dateStr', dateStr);
+        // console.log('thisWidget.value', thisWidget.value);
         
       }
     });

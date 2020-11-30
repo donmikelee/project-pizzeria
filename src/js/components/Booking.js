@@ -1,5 +1,5 @@
 import { settings, templates } from '../settings.js';
-import { select } from '../settings.js';
+import { select,classNames } from '../settings.js';
 import { utils } from '../utils.js';
 import {amountWidget} from './AmountWidget.js';
 import { datePicker } from './DatePicker.js';
@@ -37,6 +37,7 @@ export class Booking{
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
     // console.log(thisBooking.dom.hoursAmount);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.hourPicker.wrapper);
+    thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
 
 
 
@@ -141,7 +142,7 @@ export class Booking{
         }
       }
     }
-
+    thisBooking.updateDOM();
   }
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
@@ -165,6 +166,36 @@ export class Booking{
     
   }
   updateDOM(){
+    const thisBooking = this;
+
+    thisBooking.date = thisBooking.datePicker.value;
+    // console.log('thisBooking.date: ', thisBooking.date);
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    // console.log('thisBooking.hour: ', thisBooking.hour);
+    
+
+    for(let table of thisBooking.dom.tables){
+      
+      const tableId = table.getAttribute(settings.booking.tableIdAttribute);
+
+      // console.log(thisBooking.booked);
+
+      if(thisBooking.booked[thisBooking.date] && 
+         thisBooking.booked[thisBooking.date][thisBooking.hour] &&
+         thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableId)){
+        table.classList.add(classNames.booking.tableBooked);
+        
+      }
+      else{
+        table.classList.remove(classNames.booking.tableBooked);
+        
+      }
+
+      console.log(thisBooking.booked[thisBooking.date]);
+      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
+      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableId));
+    }
+
     console.log('Coś ma się pojawić');
   }
 }
