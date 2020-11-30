@@ -36,11 +36,18 @@ export class datePicker extends baseWidget{
         thisWidget.value = dateStr;
         // selectedDates.push(thisWidget.value);
 
-        console.log('selectedDates',selectedDates);
-        console.log('dateStr',dateStr);
-
+        console.log('selectedDates', selectedDates);
+        console.log('dateStr', dateStr);
+        console.log('thisWidget.value', thisWidget.value);
         
       }
     });
   }
+  parseValue(newValue) {
+    return newValue;
+  }
+  isValid() {
+    return true;
+  }
+  renderValue() {}
 }
