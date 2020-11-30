@@ -176,13 +176,13 @@ export class Booking{
 
     for(let table of thisBooking.dom.tables){
       
-      const tableId = table.getAttribute(settings.booking.tableIdAttribute);
+      const tableId = parseInt(table.getAttribute(settings.booking.tableIdAttribute));
 
       // console.log(thisBooking.booked);
 
       if(thisBooking.booked[thisBooking.date] && 
          thisBooking.booked[thisBooking.date][thisBooking.hour] &&
-         thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableId)){
+         thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId)){
         table.classList.add(classNames.booking.tableBooked);
         
       }
@@ -191,9 +191,9 @@ export class Booking{
         
       }
 
-      console.log(thisBooking.booked[thisBooking.date]);
-      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
-      console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].indexOf(tableId));
+      // console.log(thisBooking.booked[thisBooking.date]);
+      // console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
+      // console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId));
     }
 
     console.log('Coś ma się pojawić');
