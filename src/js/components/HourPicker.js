@@ -24,6 +24,8 @@ export class hourPicker extends baseWidget {
 
     thisWidget.dom.input.addEventListener('input', function() {
       thisWidget.value = thisWidget.dom.input.value;
+
+      console.log('Godzina: ', thisWidget.value, '-' ,typeof thisWidget.value);
     });
   }
 

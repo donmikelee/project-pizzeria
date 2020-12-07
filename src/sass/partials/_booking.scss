@@ -188,6 +188,11 @@
         opacity: 0.4;
       }
     }
+
+    &.selected {
+      background-color: rgb(70, 156, 93);
+      transition: ease 0.7s;
+    }
   }
 
   [data-table="1"] {
