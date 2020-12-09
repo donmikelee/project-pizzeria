@@ -55,6 +55,7 @@ export const select = {
     address: '[name="address"]',
   },
   booking: {
+    form: '.booking-form',
     peopleAmount: '.people-amount',
     hoursAmount: '.hours-amount',
     tables: '.floor-plan .table',

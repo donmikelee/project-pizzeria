@@ -22,7 +22,7 @@ export class Cart{
     thisCart.dom.toggleTrigger = element.querySelector(select.cart.toggleTrigger);
     thisCart.dom.productList = element.querySelector(select.cart.productList);
     thisCart.dom.form = element.querySelector(select.cart.form);
-    console.log(thisCart.dom.form);
+    // console.log(thisCart.dom.form);
 
     thisCart.phone = select.cart.phone;
     thisCart.address = select.cart.address;

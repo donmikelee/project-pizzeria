@@ -18,7 +18,7 @@ export class baseWidget{
     const thisWidget = this;
 
     thisWidget.dom.input.value = thisWidget.value;
-    console.log('widget value:', thisWidget.value);
+    // console.log('widget value:', thisWidget.value);
   }
   announce(){
     const thisWidget = this;

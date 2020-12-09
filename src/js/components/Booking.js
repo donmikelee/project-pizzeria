@@ -45,6 +45,8 @@ export class Booking{
     // console.log(thisBooking.dom.hoursAmount);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.bookingForm = thisBooking.dom.wrapper.querySelector(select.booking.form);
+    // console.log('Form booking: ',thisBooking.dom.bookingForm);
 
   
     
@@ -62,7 +64,10 @@ export class Booking{
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDOM();
     });
-
+    thisBooking.dom.bookingForm.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
     
   }
   getData(){
@@ -124,8 +129,8 @@ export class Booking{
         event.table);
     }
     for(let booking of bookings){
-      console.log('Booking', booking);
-    
+      // console.log('Booking', booking);
+
       thisBooking.makeBooked(
         booking.date, 
         booking.hour, 
@@ -156,6 +161,7 @@ export class Booking{
   makeBooked(date, hour, duration, table){
     const thisBooking = this;
 
+
     if(typeof thisBooking.booked[date] == 'undefined'){
       thisBooking.booked[date] = {};
     }
@@ -169,6 +175,8 @@ export class Booking{
 
       thisBooking.booked[date][hourBlock].push(table);
     }
+
+    
 
     
     // console.log('thisBooking.booked', thisBooking.booked);
@@ -202,13 +210,15 @@ export class Booking{
         table.classList.remove(classNames.booking.tableSelected);
       }
 
+
+
       // console.log(thisBooking.booked[thisBooking.date]);
       // console.log(thisBooking.booked[thisBooking.date][thisBooking.hour]);
       // console.log(thisBooking.booked[thisBooking.date][thisBooking.hour].includes(tableId));
     }
 
     // console.log('Coś ma się pojawić');
-    thisBooking.sendBooking();
+    
   }
   chooseTable(tableId){
     const thisBooking = this;
@@ -232,7 +242,7 @@ export class Booking{
 
         tableId = selectedId;
         
-        console.log('Id wybranego stolika to: ',tableId);
+        // console.log('Id wybranego stolika to: ',tableId);
 
         thisBooking.tableId = tableId;
         
@@ -243,6 +253,7 @@ export class Booking{
   sendBooking(){
     const thisBooking = this; 
 
+    // eslint-disable-next-line no-unused-vars
     const url = settings.db.url + '/' + settings.db.booking;
 
     const payload = {
@@ -257,9 +268,23 @@ export class Booking{
     };
 
     
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    };
+
+    fetch(url, options)
+      .then(function(response){
+        return response.json();
+      }).then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+      });
 
 
-    console.log(payload);
+    
     
   }
 

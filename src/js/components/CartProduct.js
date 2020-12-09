@@ -64,7 +64,7 @@ export class CartProduct{
     });
     thisCartProduct.dom.remove.addEventListener('click', function(){
       thisCartProduct.remove();
-      console.log('Nie będzie pizzy łakomczuszku:', thisCartProduct.remove());
+      // console.log('Nie będzie pizzy łakomczuszku:', thisCartProduct.remove());
     });
   }
   getData(){
