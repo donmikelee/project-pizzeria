@@ -290,6 +290,8 @@ export class Booking {
       table: thisBooking.tableId,
     };
 
+    
+
 
     const options = {
       method: 'POST',
@@ -306,9 +308,11 @@ export class Booking {
         console.log('parsedResponse', parsedResponse);
       });
 
-
-    
-    
+    thisBooking.makeBooked(
+      payload.date,
+      payload.hour,
+      payload.duration,
+      payload.table);
   }
 
 }
