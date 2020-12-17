@@ -1,0 +1,82 @@
+#cart {
+  > * {
+    display: none;
+  }
+}
+
+.cart {
+  display: none;
+}
+
+.homepage-wrapper {
+  width: 700px;
+  max-width: 700px;
+  min-height: 1000px;
+  background-color: red;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding-top: 75px;
+}
+
+.homepage-header {
+  min-height: 250px;
+  width:  605px;
+  background-color: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  > * {
+    border-radius: 5px;
+  }
+  >.subpages{
+    > * {
+      border-radius: 5px;
+    }
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    > .order-page{
+      flex: 2;
+      background-color: blue;
+      margin-right: 3px;
+    }
+    > .booking-page{
+      margin-left: 3px;
+      flex: 2;
+      background-color: darkgreen;
+    }
+  }
+  > .opening-hours-info{
+    flex: 1;
+    background-color: pink;
+    margin-top: 6px;
+  }
+}
+
+.carousele-wrapper{
+  height: 300px;
+  background-color: royalblue;
+  margin-top: 70px;
+}
+
+.photos-gallery{
+  width:  605px;
+  height: 400px;
+  background-color: gold;
+  margin: 50px auto 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > .photo{
+    height: 200px;
+    width: 200px;
+    background-color: black;
+  }
+
+}
+
+
+
+
+

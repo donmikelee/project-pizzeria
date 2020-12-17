@@ -89,7 +89,12 @@ export class Booking {
         }
       }
 
-      
+      // thisBooking.makeBooked(thisBooking.date, 
+      //   thisBooking.hour, 
+      //   thisBooking.duration, 
+      //   thisBooking.table);
+
+      // thisBooking.updateDOM();
     });
 
   }
@@ -290,8 +295,6 @@ export class Booking {
       table: thisBooking.tableId,
     };
 
-    
-
 
     const options = {
       method: 'POST',
@@ -308,11 +311,14 @@ export class Booking {
         console.log('parsedResponse', parsedResponse);
       });
 
-    thisBooking.makeBooked(
-      payload.date,
-      payload.hour,
-      payload.duration,
-      payload.table);
+    // thisBooking.makeBooked(
+    //   payload.date,
+    //   payload.hour,
+    //   payload.duration,
+    //   payload.table);
+
   }
+
+  
 
 }

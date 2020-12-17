@@ -53,43 +53,43 @@ const app = {
     });
   },
 
-  initPages: function(){
-    const thisApp = this;
+  // initPages: function(){
+  //   const thisApp = this;
 
-    thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
-    thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
+  //   thisApp.pages = Array.from(document.querySelector(select.containerOf.pages).children);
+  //   thisApp.navLinks = Array.from(document.querySelectorAll(select.nav.links));
 
 
-    let pagesMatchingHash = [];
+  //   let pagesMatchingHash = [];
 
     
 
-    if(window.location.hash.length > 2){
-      const idFromHash = window.location.hash.replace('#/', '');
+  //   if(window.location.hash.length > 2){
+  //     const idFromHash = window.location.hash.replace('#/', '');
 
-      pagesMatchingHash = thisApp.pages.filter(function(page){
-        return page.id == idFromHash;
-      });
-    }
+  //     pagesMatchingHash = thisApp.pages.filter(function(page){
+  //       return page.id == idFromHash;
+  //     });
+  //   }
 
-    thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
+  //   thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
 
-    for (let link of thisApp.navLinks){
-      link.addEventListener('click', function(event){
-        const clickedElement = this;
-        event.preventDefault();
+  //   for (let link of thisApp.navLinks){
+  //     link.addEventListener('click', function(event){
+  //       const clickedElement = this;
+  //       event.preventDefault();
 
-        /* TODO: get page id from href */
+  //       /* TODO: get page id from href */
 
-        const pageId = clickedElement.getAttribute('href').replace('#','');
+  //       const pageId = clickedElement.getAttribute('href').replace('#','');
 
-        /* TODO: activate page */
+  //       /* TODO: activate page */
 
-        thisApp.activatePage(pageId);
+  //       thisApp.activatePage(pageId);
 
-      });
-    }
-  },
+  //     });
+  //   }
+  // },
 
   activatePage: function(pageId) {
     const thisApp = this;

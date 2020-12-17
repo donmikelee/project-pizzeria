@@ -7,6 +7,7 @@ export const select = {
     bookingWidget: '#template-booking-widget',
   },
   containerOf: {
+    main: '#homepage',
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
