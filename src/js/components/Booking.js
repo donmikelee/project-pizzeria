@@ -272,7 +272,7 @@ export class Booking {
 
         // console.log('Id wybranego stolika to: ',tableId);
 
-        thisBooking.tableId = tableId;
+        thisBooking.tableId = parseInt(tableId);
 
       });
     }
@@ -311,11 +311,11 @@ export class Booking {
         console.log('parsedResponse', parsedResponse);
       });
 
-    // thisBooking.makeBooked(
-    //   payload.date,
-    //   payload.hour,
-    //   payload.duration,
-    //   payload.table);
+    thisBooking.makeBooked(
+      payload.date,
+      payload.hour,
+      payload.duration,
+      payload.table);
 
   }
 

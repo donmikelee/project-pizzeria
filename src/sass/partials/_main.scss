@@ -1,5 +1,5 @@
 #cart {
-  > * {
+  >* {
     display: none;
   }
 }
@@ -20,63 +20,75 @@
 
 .homepage-header {
   min-height: 250px;
-  width:  605px;
+  width: 620px;
   background-color: #fff;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  > * {
+
+  >* {
     border-radius: 5px;
   }
-  >.subpages{
-    > * {
+
+  >.subpages {
+    >* {
       border-radius: 5px;
     }
+
     flex: 1;
     display: flex;
     justify-content: space-around;
-    > .order-page{
+
+    >.order-page {
       flex: 2;
       background-color: blue;
       margin-right: 3px;
     }
-    > .booking-page{
+
+    >.booking-page {
       margin-left: 3px;
       flex: 2;
       background-color: darkgreen;
     }
   }
-  > .opening-hours-info{
+
+  >.opening-hours-info {
     flex: 1;
     background-color: pink;
     margin-top: 6px;
   }
 }
 
-.carousele-wrapper{
+.carousele-wrapper {
   height: 300px;
   background-color: royalblue;
   margin-top: 70px;
 }
 
-.photos-gallery{
-  width:  605px;
+.photos-gallery {
+  width: 620px;
   height: 400px;
   background-color: gold;
   margin: 50px auto 0 auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 
-  > .photo{
+  >.photo {
     height: 200px;
     width: 200px;
     background-color: black;
   }
 
+  >.first-row{
+    margin-bottom: 10px;
+  }
+
+  .two{
+    margin: 0 10px;
+  }
+
+  .five{
+    margin: 0 10px;
+  }
 }
-
-
-
-
-
