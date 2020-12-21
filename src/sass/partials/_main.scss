@@ -8,11 +8,21 @@
   display: none;
 }
 
+div{
+  border-radius: $radius;
+}
+
+h1, h2, h3{
+  margin: 0;
+}
+
+
+
 .homepage-wrapper {
   width: 700px;
   max-width: 700px;
   min-height: 1000px;
-  background-color: red;
+  background-color: $color-light;
   margin: 0 auto;
   margin-top: 40px;
   padding-top: 75px;
@@ -26,36 +36,81 @@
   display: flex;
   flex-direction: column;
 
-  >* {
-    border-radius: 5px;
-  }
+ 
 
   >.subpages {
     >* {
-      border-radius: 5px;
+      font-family: "Oswald", sans-serif;
+      display: flex;
     }
-
     flex: 1;
     display: flex;
     justify-content: space-around;
-
     >.order-page {
+      background-image: url(../../images/pizzeria-home/assets/pizza-1.jpg);
+      background-position: center;
+      background-size: cover;
+      object-fit: cover;
       flex: 2;
-      background-color: blue;
       margin-right: 3px;
+      height: 125px;
+      > .page-title{
+        font-size: 26px;
+        margin: auto;
+        color: $color-light;
+        font-weight: $font-normal;
+        text-transform: uppercase;
+      }
     }
-
     >.booking-page {
+      background-image: url(../../images/pizzeria-home/assets/pizza-2.jpg);
+      background-position: center;
+      background-size: cover;
+      object-fit: cover;
       margin-left: 3px;
       flex: 2;
       background-color: darkgreen;
+      display: flex;
+      height: 125px;
+      > .page-title{
+        font-size: 26px;
+        margin: auto;
+        color: $color-light;
+        font-weight: $font-normal;
+        text-transform: uppercase;
+      }
     }
   }
 
   >.opening-hours-info {
     flex: 1;
-    background-color: pink;
-    margin-top: 6px;
+    background-color: $color-main;
+    margin-top: 3px;
+    min-height: 120px;
+    font-family: "Oswald", sans-serif;
+    position: relative;
+    >.info-wrapper{
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      > .page-title{
+        font-size: 26px;
+        text-align: center;
+        color: $color-light;
+        text-transform: uppercase;
+      }
+      >.page-subtitle{
+        font-family: $font-text;
+        text-align: center;
+        color: $color-light;
+        text-transform: uppercase;
+        font-size: $base-size * 1.05;
+        font-weight: $font-light;
+        letter-spacing: 1px;
+      }
+    }
   }
 }
 
@@ -67,7 +122,7 @@
 
 .photos-gallery {
   width: 620px;
-  height: 400px;
+  min-height: 400px;
   background-color: gold;
   margin: 50px auto 0 auto;
   display: flex;
@@ -91,4 +146,8 @@
   .five{
     margin: 0 10px;
   }
+}
+
+footer{
+  height: 90px;
 }

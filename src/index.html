@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
   <title>Pizzeria</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
+    rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <header class="header">
@@ -20,10 +23,10 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
-        <div class="main-nav">
+        <!-- <div class="main-nav">
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
-        </div>
+        </div> -->
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">0</span>
@@ -66,10 +69,19 @@
       <header>
         <div class="homepage-header">
           <div class="subpages">
-            <div class="order-page"><h1 class="page-title">order online</h1></div>
-            <div class="booking-page"><h1 class="page-title">book a table</h1></div>
+            <div class="order-page">
+              <h1 class="page-title">order online</h1>
+            </div>
+            <div class="booking-page">
+              <h1 class="page-title">book a table</h1>
+            </div>
           </div>
-          <div class="opening-hours-info"><h1 class="page-title">opening hours:</h1><h2>tue-sun, 12pm - 12am</h2></div>
+          <div class="opening-hours-info">
+            <span class="info-wrapper">
+              <h1 class="page-title">opening hours:</h1>
+              <h2 class="page-subtitle">tue-sun, 12pm - 12am</h2>
+            </span>
+          </div>
         </div>
       </header>
       <article>
@@ -85,6 +97,9 @@
         <div class="photo snd-row five"></div>
         <div class="photo snd-row six"></div>
       </div>
+      <footer>
+        <h3>View more on instagram</h3>
+      </footer>
     </div>
   </main>
 
@@ -275,4 +290,5 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
 </body>
+
 </html>
