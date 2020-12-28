@@ -55,7 +55,9 @@ h3 {
       flex: 2;
       margin-right: 3px;
       height: 125px;
+      cursor: pointer;
       
+
 
       >.page-title {
         font-size: 26px;
@@ -70,7 +72,7 @@ h3 {
 
       >.page-subtitle {
         position: absolute;
-        bottom: -50%;
+        bottom: 10%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-family: $font-text;
@@ -80,9 +82,9 @@ h3 {
         font-size: $base-size * 1.05;
         font-weight: $font-light;
         z-index: 1000;
-        transition: 0.8s ease;
+        transition: all 0.8s ease;
       }
-      
+
     }
 
     >.booking-page {
@@ -182,10 +184,10 @@ footer {
 
 /*<----------------> HOVER EFFECTS <---------------->*/
 
-.order-page:hover>.page-title{
-    bottom: -30%;
+.order-page:hover>.page-title {
+  top: 25%;
 }
 
-.order-page:hover>.page-subtitle{
-    top: 90%;
+.order-page:hover>.page-subtitle {
+  bottom: 20%;
 }
