@@ -56,7 +56,7 @@ h3 {
       margin-right: 3px;
       height: 125px;
       cursor: pointer;
-      
+
 
 
       >.page-title {
@@ -72,7 +72,7 @@ h3 {
 
       >.page-subtitle {
         position: absolute;
-        bottom: 10%;
+        bottom: -30%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-family: $font-text;
@@ -189,5 +189,5 @@ footer {
 }
 
 .order-page:hover>.page-subtitle {
-  bottom: 20%;
+  bottom: 10%;
 }
