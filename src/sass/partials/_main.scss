@@ -8,15 +8,15 @@
   display: none;
 }
 
-div{
+div {
   border-radius: $radius;
 }
 
-h1, h2, h3{
+h1,
+h2,
+h3 {
   margin: 0;
 }
-
-
 
 .homepage-wrapper {
   width: 700px;
@@ -36,17 +36,18 @@ h1, h2, h3{
   display: flex;
   flex-direction: column;
 
- 
-
   >.subpages {
     >* {
       font-family: "Oswald", sans-serif;
       display: flex;
     }
+
     flex: 1;
     display: flex;
     justify-content: space-around;
+
     >.order-page {
+      position: relative;
       background-image: url(../../images/pizzeria-home/assets/pizza-1.jpg);
       background-position: center;
       background-size: cover;
@@ -54,14 +55,36 @@ h1, h2, h3{
       flex: 2;
       margin-right: 3px;
       height: 125px;
-      > .page-title{
+      
+
+      >.page-title {
         font-size: 26px;
-        margin: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         color: $color-light;
         font-weight: $font-normal;
         text-transform: uppercase;
       }
+
+      >.page-subtitle {
+        position: absolute;
+        bottom: -50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: $font-text;
+        text-align: center;
+        width: 250px;
+        color: $color-light;
+        font-size: $base-size * 1.05;
+        font-weight: $font-light;
+        z-index: 1000;
+        transition: 0.8s ease;
+      }
+      
     }
+
     >.booking-page {
       background-image: url(../../images/pizzeria-home/assets/pizza-2.jpg);
       background-position: center;
@@ -72,7 +95,8 @@ h1, h2, h3{
       background-color: darkgreen;
       display: flex;
       height: 125px;
-      > .page-title{
+
+      >.page-title {
         font-size: 26px;
         margin: auto;
         color: $color-light;
@@ -89,19 +113,22 @@ h1, h2, h3{
     min-height: 120px;
     font-family: "Oswald", sans-serif;
     position: relative;
-    >.info-wrapper{
+
+    >.info-wrapper {
       display: block;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      > .page-title{
+
+      >.page-title {
         font-size: 26px;
         text-align: center;
         color: $color-light;
         text-transform: uppercase;
       }
-      >.page-subtitle{
+
+      >.page-subtitle {
         font-family: $font-text;
         text-align: center;
         color: $color-light;
@@ -135,19 +162,30 @@ h1, h2, h3{
     background-color: black;
   }
 
-  >.first-row{
+  >.first-row {
     margin-bottom: 10px;
   }
 
-  .two{
+  .two {
     margin: 0 10px;
   }
 
-  .five{
+  .five {
     margin: 0 10px;
   }
 }
 
-footer{
+footer {
   height: 90px;
+}
+
+
+/*<----------------> HOVER EFFECTS <---------------->*/
+
+.order-page:hover>.page-title{
+    bottom: -30%;
+}
+
+.order-page:hover>.page-subtitle{
+    top: 90%;
 }
