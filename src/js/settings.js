@@ -70,7 +70,12 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
-  // CODE ADDED END
+  carousele: {
+    carouseleWrapper: '.carousele-wrapper',
+    carouseleSlider: '.carousel-slider',
+    carouselPagesWrapper: '.carousele-pages',
+    carouselPage: '.page',
+  } // CODE ADDED END
 };
   
 export const classNames = {

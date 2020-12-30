@@ -105,6 +105,14 @@ const app = {
 
   },
 
+  initCarousele(){
+    const thisApp = this;
+
+    thisApp.carouseleWrapper = document.querySelector(select.carousele.carouseleWrapper);
+
+    console.log(thisApp.carouseleWrapper);
+  },
+
   initBooking: function(){
     const thisApp = this;
 
@@ -127,6 +135,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initCarousele();
   }
 };
   
