@@ -184,7 +184,7 @@ h3 {
   }
 }
 
-.carousele-wrapper {
+.opinions-slider {
   height: 300px;
   width: 100%;
   margin-top: 70px;
@@ -193,8 +193,9 @@ h3 {
   // overflow: hidden;
 
 
-  .carousel-slider{
+  .slide{
     width: 700px;
+
     &.second{
       background-color: red;
       position: absolute;
@@ -202,6 +203,7 @@ h3 {
       right: -700px;
 
     }
+    
     &.third{
       background-color: red;
       position: absolute;
@@ -211,7 +213,7 @@ h3 {
   }
 
 
-  .carousele-img {
+  .image {
     width: 192px;
     height: 192px;
     margin: 0 0 0 48px;
@@ -221,7 +223,7 @@ h3 {
     object-fit: cover;
   }
 
-  .carousele-text {
+  .text {
     position: absolute;
     top: 15%;
     left: 40%;
@@ -239,31 +241,12 @@ h3 {
     }
   }
 
-  .carousele-pages {
-    width: 100%;
-    display: flex;
-  }
+  .flickity-page-dots{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
-  ul {
-    margin: auto;
-    text-align: center;
-    padding-top: 28px;
-    padding-left: 0;
-
-    li {
-      display: inline-block;
-
-      .page {
-        height: 10px;
-        width: 10px;
-        border-radius: 50%;
-        background-color: lightgray;
-      }
-
-      &:nth-child(2) {
-        margin: 0 12px 0 12px;
-      }
-    }
   }
 }
 

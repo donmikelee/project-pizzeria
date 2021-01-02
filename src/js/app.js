@@ -74,6 +74,7 @@ const app = {
     thisApp.activatePage(pagesMatchingHash.length ? pagesMatchingHash[0].id : thisApp.pages[0].id);
 
     for (let link of thisApp.navLinks){
+
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
@@ -95,6 +96,11 @@ const app = {
 
     for (let link of thisApp.navLinks){
       link.classList.toggle(classNames.nav.active, link.getAttribute('href') == '#' + pageId);
+
+      const activeLink = link.classList.contains('active');
+
+      console.log(activeLink);
+      
     }
 
     for (let page of thisApp.pages){
@@ -103,14 +109,17 @@ const app = {
 
     window.location.hash = '#/' + pageId;
 
-  },
+    // if(pageId === 'homepage'){
+    //   const mainNav = document.querySelector('.main-nav');
 
-  initCarousele(){
-    const thisApp = this;
+    //   mainNav.classList.add('unactive');
+    // }
+    // if(pageId === 'order' & pageId === 'booking'){
+    //   const mainNav = document.querySelector('.main-nav');
 
-    thisApp.carouseleWrapper = document.querySelector(select.carousele.carouseleWrapper);
+    //   mainNav.classList.remove('unactive');
+    // }
 
-    console.log(thisApp.carouseleWrapper);
   },
 
   initBooking: function(){
@@ -135,7 +144,6 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initCarousele();
   }
 };
   

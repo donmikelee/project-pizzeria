@@ -62,7 +62,7 @@ export const select = {
     tables: '.floor-plan .table',
   },
   nav: {
-    links: '.main-nav a',
+    links: '.main-nav a, .subpages a',
   },
   cartProduct: {
     amountWidget: '.widget-amount',
@@ -94,6 +94,7 @@ export const classNames = {
   },
   nav: {
     active: 'active',
+    inactive: 'inactive'
   },
   pages: {
     active: 'active',

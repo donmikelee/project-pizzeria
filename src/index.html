@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2.2.1/dist/flickity.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -23,133 +24,219 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
+        <div id="cart" class="cart">
+          <div class="cart__summary">
+            <span class="cart__total-number">0</span>
+            <span class="cart__total-price">Total price: $<strong>0</strong></span>
+            <i class="fas fa-chevron-down"></i>
+            <i class="fas fa-shopping-cart cart__icon"></i>
+          </div>
+          <div class="cart__content">
+            <form class="cart__order">
+              <ul class="cart__order-summary no-spacing">
+              </ul>
+              <ul class="cart__order-price">
+                <li class="cart__order-subtotal">
+                  <span class="cart__order-price-name">Subtotal:</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+                <li class="cart__order-delivery">
+                  <span class="cart__order-price-name">Delivery:</span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+                <li class="cart__order-total">
+                  <span class="cart__order-price-name"><strong>Total:</strong></span>
+                  <span class="cart__order-price-sum">$<strong>0</strong></span>
+                </li>
+              </ul>
+              <div class="cart__order-confirmation">
+                <input type="tel" name="phone" placeholder="Your phone">
+                <input type="text" name="address" placeholder="Your address">
+                <button type="submit" class="btn-secondary">Order</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="main-nav">
+          <a href="#homepage">Home</a>
+          <a href="#order">Order</a>
+          <a href="#booking">Booking</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <main>
-    <div id="homepage" class="homepage-wrapper">
-      <header>
-        <div class="homepage-header">
-          <div class="subpages">
-            <div class="order-page">
-              <a href="order-page.html" class="order-page-website" title="Zamów jedzenie na wynos"></a>
-              <h1 class="page-title">order online</h1>
-              <h2 class="page-subtitle">Delicious food delivered to your door</h2>
+  <div id="pages">
+    <section id="homepage" class="active">
+      <div class="homepage-wrapper">
+        <header>
+          <div class="homepage-header">
+            <div class="subpages">
+              <div class="order-page">
+                <a href="#order" class="order-page-website" title="Zamów jedzenie na wynos">
+                <h1 class="page-title">order online</h1>
+                <h2 class="page-subtitle">Delicious food delivered to your door</h2>
+                </a>
+              </div>
+              <div class="booking-page">
+                <a href="#booking" class="booking-page-website" title="Złóż rezerwację stolika">
+                <h1 class="page-title">book a table</h1>
+                <h2 class="page-subtitle">Cozy place with extraordinary atmosphere</h2>
+                </a>
+              </div>
             </div>
-            <div class="booking-page">
-              <a href="booking-page.html" class="booking-page-website" title="Złóż rezerwację stolika"></a>
-              <h1 class="page-title">book a table</h1>
-              <h2 class="page-subtitle">Cozy place with extraordinary atmosphere</h2>
+            <div class="opening-hours-info">
+              <div class="info-wrapper">
+                <h1 class="page-title">opening hours:</h1>
+                <h2 class="page-subtitle">tue-sun, 12pm - 12am</h2>
+              </div>
             </div>
           </div>
-          <div class="opening-hours-info">
-            <span class="info-wrapper">
-              <h1 class="page-title">opening hours:</h1>
-              <h2 class="page-subtitle">tue-sun, 12pm - 12am</h2>
-            </span>
-          </div>
-        </div>
-      </header>
-      <article>
-        <div class="carousele-wrapper">
-          <div class="carousel-slider fist">
-            <div class="carousele-img">
+        </header>
+        <!-- <article>
+          <div class="carousele-wrapper">
+            <div class="carousel-slider fist">
+              <div class="carousele-img">
+              </div>
+              <div class="carousele-text">
+                <h2>amazing service!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
+                  eveniet cupiditate veritatis id fuga.
+                </p>
+                <p class="author">- Margaret Osborne</p>
+              </div>
             </div>
-            <div class="carousele-text">
-              <h2>amazing service!</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
-                eveniet cupiditate veritatis id fuga.
+            <div class="carousel-slider second">
+              <div class="carousele-img">
+              </div>
+              <div class="carousele-text">
+                <h2>amazing service!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
+                  eveniet cupiditate veritatis id fuga.
+                </p>
+                <p class="author">- Margaret Osborne</p>
+              </div>
+            </div>
+            <div class="carousel-slider third">
+              <div class="carousele-img">
+              </div>
+              <div class="carousele-text">
+                <h2>amazing service!</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
+                  eveniet cupiditate veritatis id fuga.
+                </p>
+                <p class="author">- Margaret Osborne</p>
+              </div>
+            </div>
+            <div class="carousele-pages">
+              <ul>
+                <li>
+                  <div class="page"></div>
+                </li>
+                <li>
+                  <div class="page"></div>
+                </li>
+                <li>
+                  <div class="page"></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </article> -->
+        <div class="container opinions-slider js-flickity" data-flickity-options='{ "cellAlign": "center", "contain": true, "autoPlay": true, "prevNextButtons": false }'>          
+          <article class="slide">
+            <div class="image">
+              <img src="" alt="">
+            </div>
+            <div class="text">
+              <h2 class="h2">Amazing service!</h2>
+              <p class="opinion">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
               </p>
-              <p class="author">- Margaret Osborne</p>
+              <p class="signature">- Margaret Osborne</p>  
+            </div>  
+          </article>
+          <article class="slide">
+            <div class="image">
+              <img src="" alt="">
             </div>
-          </div>
-          <div class="carousel-slider second">
-            <div class="carousele-img">
-            </div>
-            <div class="carousele-text">
-              <h2>amazing service!</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
-                eveniet cupiditate veritatis id fuga.
+            <div class="text">
+              <h2 class="h2">Feels like Italy!</h2>
+              <p class="opinion">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
               </p>
-              <p class="author">- Margaret Osborne</p>
+              <p class="signature">- Laura Monti</p>  
             </div>
-          </div>
-          <div class="carousel-slider third">
-            <div class="carousele-img">
+          </article>
+          <article class="slide">
+            <div class="image">
+              <img src="" alt="">
             </div>
-            <div class="carousele-text">
-              <h2>amazing service!</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus hic, nulla aliquam recusandae neque
-                eveniet cupiditate veritatis id fuga.
+            <div class="text">
+              <h2 class="h2">The best pizza ever!</h2>
+              <p class="opinion">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas viverra tortor, eu ullamcorper dui imperdiet nec. Nunc sed dolor at elit lobortis sodales.
               </p>
-              <p class="author">- Margaret Osborne</p>
+              <p class="signature">- Albert Blixen</p>  
+            </div>
+          </article>   
+        </div> 
+        <div class="photos-gallery">
+          <div class="photo first-row one">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
             </div>
           </div>
-          <div class="carousele-pages">
-            <ul>
-              <li>
-                <div class="page"></div>
-              </li>
-              <li>
-                <div class="page"></div>
-              </li>
-              <li>
-                <div class="page"></div>
-              </li>
-            </ul>
+          <div class="photo first-row two">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
+            </div>
+          </div>
+          <div class="photo first-row three">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
+            </div>
+          </div>
+          <div class="photo snd-row four">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
+            </div>
+          </div>
+          <div class="photo snd-row five">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
+            </div>
+          </div>
+          <div class="photo snd-row six">
+            <div class="overlay">
+            </div>
+            <div class="icons">
+              <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i>
+            </div>
           </div>
         </div>
-      </article>
-      <div class="photos-gallery">
-        <div class="photo first-row one">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
-        <div class="photo first-row two">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
-        <div class="photo first-row three">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
-        <div class="photo snd-row four">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
-        <div class="photo snd-row five">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
-        <div class="photo snd-row six">
-          <div class="overlay">
-          </div>
-          <div class="icons">
-            <i class="fas fa-heart"></i><i class="fas fa-share-alt-square"></i></i>
-          </div>
-        </div>
+        <footer>
+          <p>View more on instagram</p>
+        </footer>
       </div>
-      <footer>
-        <p>View more on instagram</p>
-      </footer>
-    </div>
-  </main>
+    </section>
+    <section id="order" class="active">
+      <div id="product-list" class="product-list container"></div>
+    </section>
+    <section id="booking">
+      <div class="booking-wrapper container"></div>
+    </section>
+  </div>
 
   <script id="template-booking-widget" type="text/x-handlebars-template">
     <div class="booking-widget">
@@ -328,6 +415,7 @@
   <script src="js/app.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/flickity@2.2.1/dist/flickity.pkgd.min.js"></script>
 </body>
 
 </html>
